@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API::CPANRatings;
 BEGIN {
-  $MetaCPAN::API::CPANRatings::VERSION = '0.01_02';
+  $MetaCPAN::API::CPANRatings::VERSION = '0.01_03';
 }
 # ABSTRACT: CPAN Ratings information for MetaCPAN::API
 
@@ -51,7 +51,7 @@ MetaCPAN::API::CPANRatings - CPAN Ratings information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.01_02
+version 0.01_03
 
 =head1 AUTHOR
 

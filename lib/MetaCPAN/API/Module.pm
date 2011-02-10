@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API::Module;
 BEGIN {
-  $MetaCPAN::API::Module::VERSION = '0.01_02';
+  $MetaCPAN::API::Module::VERSION = '0.01_03';
 }
 # ABSTRACT: Module and dist information for MetaCPAN::API
 
@@ -57,7 +57,7 @@ MetaCPAN::API::Module - Module and dist information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.01_02
+version 0.01_03
 
 =head1 AUTHOR
 

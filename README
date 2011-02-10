@@ -2,7 +2,7 @@ NAME
     MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 VERSION
-    version 0.01_02
+    version 0.01_03
 
 AUTHOR
       Sawyer X <xsawyerx@cpan.org>
