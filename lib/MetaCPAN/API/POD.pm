@@ -2,13 +2,13 @@ use strict;
 use warnings;
 package MetaCPAN::API::POD;
 BEGIN {
-  $MetaCPAN::API::POD::VERSION = '0.01_01';
+  $MetaCPAN::API::POD::VERSION = '0.01_02';
 }
 # ABSTRACT: POD information for MetaCPAN::API
 
 use Any::Moose 'Role';
 
-requires 'render_result';
+requires '_http_req';
 
 has pod_prefix => (
     is      => 'ro',
@@ -23,7 +23,7 @@ sub search_pod {
     my $base    = $self->base_url;
     my $prefix  = $self->pod_prefix;
     my $url     = "$base/$prefix/$dist";
-    my $result  = $self->ua->get($url);
+    my $result  = $self->_http_req($url);
 
     return $result;
 }
@@ -39,7 +39,7 @@ MetaCPAN::API::POD - POD information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.01_01
+version 0.01_02
 
 =head1 AUTHOR
 

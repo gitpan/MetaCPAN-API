@@ -2,13 +2,13 @@ use strict;
 use warnings;
 package MetaCPAN::API::Module;
 BEGIN {
-  $MetaCPAN::API::Module::VERSION = '0.01_01';
+  $MetaCPAN::API::Module::VERSION = '0.01_02';
 }
 # ABSTRACT: Module and dist information for MetaCPAN::API
 
 use Any::Moose 'Role';
 
-requires 'render_result';
+requires '_http_req';
 
 has module_prefix => (
     is      => 'ro',
@@ -23,13 +23,9 @@ sub search_dist {
     my %req_opts = @_;
     my $base     = $self->base_url;
     my $prefix   = $self->module_prefix;
-    my $url      = "$base/$prefix/_search?q=dist:$dist";
+    my $url      = "$base/$prefix/_search?q=distname:$dist";
     my @hits     = $self->_get_hits(
-        $self->ua->request(
-            'GET',
-            $url,
-            \%req_opts,
-        )
+        $self->_http_req( $url, \%req_opts )
     );
 
     return @hits;
@@ -43,13 +39,8 @@ sub search_module {
     my $base     = $self->base_url;
     my $prefix   = $self->module_prefix;
     my $url      = "$base/$prefix/$module";
-    print $self->ua->request('GET', $url, \%req_opts), "\n";
     my @hits     = $self->_get_hits(
-        $self->ua->request(
-            'GET',
-            $url,
-            \%req_opts,
-        )
+        $self->_http_req( $url, \%req_opts )
     );
 
     return @hits;
@@ -66,7 +57,7 @@ MetaCPAN::API::Module - Module and dist information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.01_01
+version 0.01_02
 
 =head1 AUTHOR
 

@@ -2,14 +2,14 @@ use strict;
 use warnings;
 package MetaCPAN::API::Author;
 BEGIN {
-  $MetaCPAN::API::Author::VERSION = '0.01_01';
+  $MetaCPAN::API::Author::VERSION = '0.01_02';
 }
 # ABSTRACT: Author information for MetaCPAN::API
 
 use Any::Moose 'Role';
 use URI::Escape;
 
-requires 'render_result';
+requires '_http_req';
 
 has author_prefix => (
     is      => 'ro',
@@ -51,7 +51,7 @@ sub search_author_pauseid {
     my $base    = $self->base_url;
     my $prefix  = $self->author_prefix;
     my $url     = "$base/$prefix/$pauseid";
-    my $result  = $self->ua->get($url);
+    my $result  = $self->_http_req($url);
 
     return $result;
 }
@@ -69,7 +69,7 @@ sub search_author_name {
     $name = uri_escape( $name, q{^A-Za-z0-9\-\._~} );
 
     my $url    = "$base/$prefix/_search?q=name:$name";
-    my $result = $self->ua->get($url);
+    my $result = $self->_http_req($url);
 
     return $result;
 }
@@ -81,7 +81,7 @@ sub search_author_wildcard {
     my $base   = $self->base_url;
     my $prefix = $self->author_prefix;
     my $url    = "$base/$prefix/_search?q=author:$term";
-    my $result = $self->ua->get($url);
+    my $result = $self->_http_req($url);
 
     return $result;
 }
@@ -97,7 +97,7 @@ MetaCPAN::API::Author - Author information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.01_01
+version 0.01_02
 
 =head1 AUTHOR
 

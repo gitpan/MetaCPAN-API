@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API;
 BEGIN {
-  $MetaCPAN::API::VERSION = '0.01_01';
+  $MetaCPAN::API::VERSION = '0.01_02';
 }
 # ABSTRACT: A comprehensive, DWIM-featured API to MetaCPAN
 
@@ -20,7 +20,7 @@ with qw/
 /;
 
 has base_url => (
-    is      => 'ro',
+    is      => 'rw',
     isa     => 'Str',
     default => 'http://api.metacpan.org',
 );
@@ -59,8 +59,13 @@ sub _get_hits {
     return @hits;
 }
 
-sub render_result {
-1;
+sub _http_req {
+    my $self               = shift;
+    my ( $url, $req_opts ) = @_;
+
+    my $res = $self->ua->request( 'GET', $url, $req_opts );
+
+    return $res;
 }
 
 1;
@@ -74,7 +79,7 @@ MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 =head1 VERSION
 
-version 0.01_01
+version 0.01_02
 
 =head1 AUTHOR
 
