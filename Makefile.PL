@@ -4,7 +4,7 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -15,10 +15,12 @@ my %WriteMakefileArgs = (
     'File::Find' => '0',
     'File::Temp' => '0',
     'Module::Build' => '0.3601',
-    'Test::More' => '0'
+    'Test::Fatal' => '0',
+    'Test::More' => '0',
+    'Test::TinyMocker' => '0'
   },
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31',
+    'ExtUtils::MakeMaker' => '6.30',
     'Module::Build' => '0.3601'
   },
   'DISTNAME' => 'MetaCPAN-API',
@@ -30,10 +32,9 @@ my %WriteMakefileArgs = (
     'Carp' => '0',
     'HTTP::Tiny' => '0',
     'JSON' => '0',
-    'Try::Tiny' => '0',
-    'URI::Escape' => '0'
+    'Try::Tiny' => '0'
   },
-  'VERSION' => '0.02',
+  'VERSION' => '0.10',
   'test' => {
     'TESTS' => 't/*.t'
   }

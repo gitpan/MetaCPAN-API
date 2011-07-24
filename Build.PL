@@ -10,10 +10,12 @@ my %module_build_args = (
     'File::Find' => '0',
     'File::Temp' => '0',
     'Module::Build' => '0.3601',
-    'Test::More' => '0'
+    'Test::Fatal' => '0',
+    'Test::More' => '0',
+    'Test::TinyMocker' => '0'
   },
   'configure_requires' => {
-    'ExtUtils::MakeMaker' => '6.31',
+    'ExtUtils::MakeMaker' => '6.30',
     'Module::Build' => '0.3601'
   },
   'dist_abstract' => 'A comprehensive, DWIM-featured API to MetaCPAN',
@@ -21,7 +23,7 @@ my %module_build_args = (
     'Sawyer X <xsawyerx@cpan.org>'
   ],
   'dist_name' => 'MetaCPAN-API',
-  'dist_version' => '0.02',
+  'dist_version' => '0.10',
   'license' => 'perl',
   'module_name' => 'MetaCPAN::API',
   'recommends' => {},
@@ -31,8 +33,7 @@ my %module_build_args = (
     'Carp' => '0',
     'HTTP::Tiny' => '0',
     'JSON' => '0',
-    'Try::Tiny' => '0',
-    'URI::Escape' => '0'
+    'Try::Tiny' => '0'
   },
   'script_files' => []
 );
