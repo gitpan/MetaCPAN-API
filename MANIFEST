@@ -12,6 +12,7 @@ lib/MetaCPAN/API/Module.pm
 lib/MetaCPAN/API/POD.pm
 lib/MetaCPAN/API/Release.pm
 t/00-compile.t
+t/_build_extra_params.t
 t/author.t
 t/fetch.t
 t/module.t

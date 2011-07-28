@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API;
 BEGIN {
-  $MetaCPAN::API::VERSION = '0.11';
+  $MetaCPAN::API::VERSION = '0.20';
 }
 # ABSTRACT: A comprehensive, DWIM-featured API to MetaCPAN
 
@@ -12,6 +12,7 @@ use Carp;
 use JSON;
 use Try::Tiny;
 use HTTP::Tiny;
+use URI::Escape 'uri_escape';
 
 with qw/
     MetaCPAN::API::Author
@@ -45,11 +46,13 @@ sub _build_ua {
 }
 
 sub fetch {
-    my $self = shift;
-    my $url  = shift;
-    my $base = $self->base_url;
+    my $self    = shift;
+    my $url     = shift;
+    my $extra   = $self->_build_extra_params(@_);
+    my $base    = $self->base_url;
+    my $req_url = $extra ? "$base/$url?$extra" : "$base/$url";
 
-    my $result = $self->ua->get("$base/$url");
+    my $result  = $self->ua->get($req_url);
     my $decoded_result;
 
     $result->{'success'}
@@ -64,6 +67,18 @@ sub fetch {
     return $decoded_result;
 }
 
+sub _build_extra_params {
+    my $self = shift;
+
+    @_ % 2 == 0
+        or croak 'Incorrect number of params, must be key/value';
+
+    my %extra = @_;
+    my $extra = join '&', map { "$_=" . uri_escape($extra{$_}) } keys %extra;
+
+    return $extra;
+}
+
 1;
 
 
@@ -76,7 +91,7 @@ MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 =head1 VERSION
 
-version 0.11
+version 0.20
 
 =head1 SYNOPSIS
 
@@ -183,11 +198,19 @@ new instance of MetaCPAN::API. Why is it immutable? Because it's better.
 
     my $result = $mcpan->fetch('/release/distribution/Moose');
 
+    # with parameters
+    my $more = $mcpan->fetch(
+        '/release/distribution/Moose',
+        param => 'value',
+    );
+
 This is a helper method for API implementations. It fetches a path from
 MetaCPAN, decodes the JSON from the content variable and returns it.
 
 You don't really need to use it, but you can in case you want to write your
 own extension implementation to MetaCPAN::API.
+
+It accepts an additional hash as C<GET> parameters.
 
 =head1 AUTHOR
 

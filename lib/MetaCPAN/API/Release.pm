@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API::Release;
 BEGIN {
-  $MetaCPAN::API::Release::VERSION = '0.11';
+  $MetaCPAN::API::Release::VERSION = '0.20';
 }
 # ABSTRACT: Distribution and releases information for MetaCPAN::API
 
@@ -15,9 +15,12 @@ sub release {
     my $self  = shift;
     my %opts  = @_ ? @_ : ();
     my $url   = '';
-    my $error = "Either provide 'distribution' or 'author' and 'release'";
+    my $error = "Either provide 'distribution', or 'author' and 'release', " .
+                "or 'search'";
 
     %opts or croak $error;
+
+    my %extra_opts = ();
 
     if ( defined ( my $dist = $opts{'distribution'} ) ) {
         $url = "release/$dist";
@@ -26,11 +29,17 @@ sub release {
         defined ( my $release = $opts{'release'} )
       ) {
         $url = "release/$author/$release";
+    } elsif ( defined ( my $search_opts = $opts{'search'} ) ) {
+        ref $search_opts && ref $search_opts eq 'HASH'
+            or croak $error;
+
+        %extra_opts = %{$search_opts};
+        $url        = 'release/_search';
     } else {
         croak $error;
     }
 
-    return $self->fetch($url);
+    return $self->fetch( $url, %extra_opts );
 }
 
 1;
@@ -45,7 +54,7 @@ MetaCPAN::API::Release - Distribution and releases information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.11
+version 0.20
 
 =head1 DESCRIPTION
 
@@ -62,6 +71,18 @@ and releases.
     my $result = $mcpan->release( author => 'DOY', release => 'Moose-2.0001' );
 
 Searches MetaCPAN for a dist.
+
+You can do complex searches using 'search' parameter:
+
+    # example lifted from MetaCPAN docs
+    my $result = $mcpan->release(
+        search => {
+            author => "OALDERS AND ",
+            filter => "status:latest",
+            fields => "name",
+            size   => 1,
+        },
+    );
 
 =head1 AUTHOR
 

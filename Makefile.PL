@@ -32,9 +32,10 @@ my %WriteMakefileArgs = (
     'Carp' => '0',
     'HTTP::Tiny' => '0',
     'JSON' => '0',
-    'Try::Tiny' => '0'
+    'Try::Tiny' => '0',
+    'URI::Escape' => '0'
   },
-  'VERSION' => '0.11',
+  'VERSION' => '0.20',
   'test' => {
     'TESTS' => 't/*.t'
   }

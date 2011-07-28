@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API::POD;
 BEGIN {
-  $MetaCPAN::API::POD::VERSION = '0.11';
+  $MetaCPAN::API::POD::VERSION = '0.20';
 }
 # ABSTRACT: POD information for MetaCPAN::API
 
@@ -32,14 +32,17 @@ sub pod {
     }
 
     # check content-type
+    my %extra = ();
     if ( defined ( my $type = $opts{'content-type'} ) ) {
-        $type =~ m{^text/ (?: html|plain|x-pod|x-markdown )}x
+        $type =~ m{^ text/ (?: html|plain|x-pod|x-markdown ) $}x
             or croak 'Incorrect content-type provided';
+
+        $extra{'content-type'} = $type;
     }
 
     $url = $self->base_url . "/$url";
 
-    my $result = $self->ua->get($url);
+    my $result = $self->ua->get( $url, \%extra );
     $result->{'success'}
         or croak "Failed to fetch '$url': " . $result->{'reason'};
 
@@ -58,7 +61,7 @@ MetaCPAN::API::POD - POD information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.11
+version 0.20
 
 =head1 DESCRIPTION
 

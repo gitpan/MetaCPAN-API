@@ -23,7 +23,7 @@ my %module_build_args = (
     'Sawyer X <xsawyerx@cpan.org>'
   ],
   'dist_name' => 'MetaCPAN-API',
-  'dist_version' => '0.11',
+  'dist_version' => '0.20',
   'license' => 'perl',
   'module_name' => 'MetaCPAN::API',
   'recommends' => {},
@@ -33,7 +33,8 @@ my %module_build_args = (
     'Carp' => '0',
     'HTTP::Tiny' => '0',
     'JSON' => '0',
-    'Try::Tiny' => '0'
+    'Try::Tiny' => '0',
+    'URI::Escape' => '0'
   },
   'script_files' => []
 );

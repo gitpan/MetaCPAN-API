@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API::Module;
 BEGIN {
-  $MetaCPAN::API::Module::VERSION = '0.11';
+  $MetaCPAN::API::Module::VERSION = '0.20';
 }
 # ABSTRACT: Module information for MetaCPAN::API
 
@@ -19,6 +19,9 @@ sub module {
     return $self->fetch("module/$name");
 }
 
+# file() is a synonym of module
+sub file { goto &module }
+
 1;
 
 
@@ -31,7 +34,7 @@ MetaCPAN::API::Module - Module information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.11
+version 0.20
 
 =head1 DESCRIPTION
 
@@ -46,6 +49,10 @@ More specifically, this returns the C<.pm> file of that module.
     my $result = $mcpan->module('MetaCPAN::API');
 
 Searches MetaCPAN and returns a module's C<.pm> file.
+
+=head2 file
+
+A synonym of C<module>.
 
 =head1 AUTHOR
 

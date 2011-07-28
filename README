@@ -2,7 +2,7 @@ NAME
     MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 VERSION
-    version 0.11
+    version 0.20
 
 SYNOPSIS
         my $mcpan  = MetaCPAN::API->new();
@@ -102,11 +102,19 @@ METHODS
   fetch
         my $result = $mcpan->fetch('/release/distribution/Moose');
 
+        # with parameters
+        my $more = $mcpan->fetch(
+            '/release/distribution/Moose',
+            param => 'value',
+        );
+
     This is a helper method for API implementations. It fetches a path from
     MetaCPAN, decodes the JSON from the content variable and returns it.
 
     You don't really need to use it, but you can in case you want to write
     your own extension implementation to MetaCPAN::API.
+
+    It accepts an additional hash as "GET" parameters.
 
 AUTHOR
       Sawyer X <xsawyerx@cpan.org>
