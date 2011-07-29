@@ -2,7 +2,7 @@ NAME
     MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 VERSION
-    version 0.20
+    version 0.30
 
 SYNOPSIS
         my $mcpan  = MetaCPAN::API->new();
@@ -115,6 +115,19 @@ METHODS
     your own extension implementation to MetaCPAN::API.
 
     It accepts an additional hash as "GET" parameters.
+
+  post
+        # /release&content={"query":{"match_all":{}},"filter":{"prefix":{"archive":"Cache-Cache-1.06"}}}
+        my $result = $mcpan->fetch(
+            'release',
+            {
+                query  => { match_all => {} },
+                filter => { prefix => { archive => 'Cache-Cache-1.06' } },
+            },
+        );
+
+    The POST equivalent of the "fetch()" method. It gets the path and JSON
+    request.
 
 AUTHOR
       Sawyer X <xsawyerx@cpan.org>

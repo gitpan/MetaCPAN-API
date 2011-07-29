@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API;
 BEGIN {
-  $MetaCPAN::API::VERSION = '0.20';
+  $MetaCPAN::API::VERSION = '0.30';
 }
 # ABSTRACT: A comprehensive, DWIM-featured API to MetaCPAN
 
@@ -53,10 +53,53 @@ sub fetch {
     my $req_url = $extra ? "$base/$url?$extra" : "$base/$url";
 
     my $result  = $self->ua->get($req_url);
+    return $self->_decode_result( $result, $req_url );
+}
+
+sub post {
+    my $self  = shift;
+    my $url   = shift;
+    my $query = shift;
+    my $base  = $self->base_url;
+
+    defined $url
+        or croak 'First argument of URL must be provided';
+
+    ref $query and ref $query eq 'HASH'
+        or croak 'Second argument of query hashref must be provided';
+
+    my $query_json = encode_json $query;
+    my $result     = $self->ua->request(
+        'POST',
+        "$base/$url",
+        {
+            headers => { 'Content-Type' => 'application/json' },
+            content => $query_json,
+        }
+    );
+
+    return $self->_decode_result( $result, $url, $query_json );
+}
+
+sub _decode_result {
+    my $self = shift;
+    my ( $result, $url, $original ) = @_;
     my $decoded_result;
 
-    $result->{'success'}
-        or croak "Failed to fetch '$url': " . $result->{'reason'};
+    ref $result and ref $result eq 'HASH'
+        or croak 'First argument must be hashref';
+
+    defined $url
+        or croak 'Second argument of a URL must be provided';
+
+    if ( defined ( my $success = $result->{'success'} ) ) {
+        my $reason = $result->{'reason'} || '';
+        $reason .= ( defined $original ? " (request: $original)" : '' );
+
+        $success or croak "Failed to fetch '$url': $reason";
+    } else {
+        croak 'Missing success in return value';
+    }
 
     defined ( my $content = $result->{'content'} )
         or croak 'Missing content in return value';
@@ -91,7 +134,7 @@ MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 =head1 VERSION
 
-version 0.20
+version 0.30
 
 =head1 SYNOPSIS
 
@@ -211,6 +254,19 @@ You don't really need to use it, but you can in case you want to write your
 own extension implementation to MetaCPAN::API.
 
 It accepts an additional hash as C<GET> parameters.
+
+=head2 post
+
+    # /release&content={"query":{"match_all":{}},"filter":{"prefix":{"archive":"Cache-Cache-1.06"}}}
+    my $result = $mcpan->fetch(
+        'release',
+        {
+            query  => { match_all => {} },
+            filter => { prefix => { archive => 'Cache-Cache-1.06' } },
+        },
+    );
+
+The POST equivalent of the C<fetch()> method. It gets the path and JSON request.
 
 =head1 AUTHOR
 

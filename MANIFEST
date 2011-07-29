@@ -13,10 +13,12 @@ lib/MetaCPAN/API/POD.pm
 lib/MetaCPAN/API/Release.pm
 t/00-compile.t
 t/_build_extra_params.t
+t/_decode_result.t
 t/author.t
 t/fetch.t
 t/module.t
 t/pod.t
+t/post.t
 t/release-pod-syntax.t
 t/release.t
 t/ua.t
