@@ -2,7 +2,7 @@ NAME
     MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 VERSION
-    version 0.30
+    version 0.31
 
 SYNOPSIS
         my $mcpan  = MetaCPAN::API->new();
@@ -11,7 +11,7 @@ SYNOPSIS
 
 DESCRIPTION
     This is a hopefully-complete API-compliant interface to MetaCPAN
-    (http://search.metacpan.org) with DWIM capabilities, to make your life
+    (<https://metacpan.org>) with DWIM capabilities, to make your life
     easier.
 
     This module has three purposes:
@@ -70,7 +70,7 @@ ATTRIBUTES
     tunnel it through a local port, or any of those stuff, you would want to
     change this.
 
-    Default: *http://beta.api.metacpan.org*.
+    Default: *http://api.metacpan.org/v0*.
 
     This attribute is read-only (immutable), meaning that once it's set on
     initialize (via "new()"), you cannot change it. If you need to, create a

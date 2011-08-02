@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API::Release;
 BEGIN {
-  $MetaCPAN::API::Release::VERSION = '0.30';
+  $MetaCPAN::API::Release::VERSION = '0.31';
 }
 # ABSTRACT: Distribution and releases information for MetaCPAN::API
 
@@ -54,7 +54,7 @@ MetaCPAN::API::Release - Distribution and releases information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 DESCRIPTION
 

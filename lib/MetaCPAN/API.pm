@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API;
 BEGIN {
-  $MetaCPAN::API::VERSION = '0.30';
+  $MetaCPAN::API::VERSION = '0.31';
 }
 # ABSTRACT: A comprehensive, DWIM-featured API to MetaCPAN
 
@@ -134,7 +134,7 @@ MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 
@@ -145,7 +145,7 @@ version 0.30
 =head1 DESCRIPTION
 
 This is a hopefully-complete API-compliant interface to MetaCPAN
-(http://search.metacpan.org) with DWIM capabilities, to make your life easier.
+(L<https://metacpan.org>) with DWIM capabilities, to make your life easier.
 
 This module has three purposes:
 
@@ -205,7 +205,7 @@ MetaCPAN is accessible. By default it's already set correctly, but if you're
 running a local instance of MetaCPAN, or use a local mirror, or tunnel it
 through a local port, or any of those stuff, you would want to change this.
 
-Default: I<http://beta.api.metacpan.org>.
+Default: I<http://api.metacpan.org/v0>.
 
 This attribute is read-only (immutable), meaning that once it's set on
 initialize (via C<new()>), you cannot change it. If you need to, create a
