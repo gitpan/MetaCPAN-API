@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API;
 BEGIN {
-  $MetaCPAN::API::VERSION = '0.31';
+  $MetaCPAN::API::VERSION = '0.32';
 }
 # ABSTRACT: A comprehensive, DWIM-featured API to MetaCPAN
 
@@ -36,7 +36,10 @@ has ua => (
 has ua_args => (
     is      => 'ro',
     isa     => 'ArrayRef',
-    default => sub { [] },
+    default => sub {
+        my $version = $MetaCPAN::API::VERSION || 'xx';
+        return [ agent => "MetaCPAN::API/$version" ];
+    },
 );
 
 sub _build_ua {
@@ -134,7 +137,7 @@ MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 SYNOPSIS
 
@@ -234,6 +237,8 @@ The arguments that will be given to the L<HTTP::Tiny> user agent.
 This attribute is read-only (immutable), meaning that once it's set on
 initialize (via C<new()>), you cannot change it. If you need to, create a
 new instance of MetaCPAN::API. Why is it immutable? Because it's better.
+
+The default is a user agent string: B<MetaCPAN::API/$version>.
 
 =head1 METHODS
 

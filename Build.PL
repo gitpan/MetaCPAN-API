@@ -12,7 +12,8 @@ my %module_build_args = (
     'Module::Build' => '0.3601',
     'Test::Fatal' => '0',
     'Test::More' => '0',
-    'Test::TinyMocker' => '0'
+    'Test::TinyMocker' => '0',
+    't::lib::Functions' => '0'
   },
   'configure_requires' => {
     'ExtUtils::MakeMaker' => '6.30',
@@ -23,7 +24,7 @@ my %module_build_args = (
     'Sawyer X <xsawyerx@cpan.org>'
   ],
   'dist_name' => 'MetaCPAN-API',
-  'dist_version' => '0.31',
+  'dist_version' => '0.32',
   'license' => 'perl',
   'module_name' => 'MetaCPAN::API',
   'recommends' => {},

@@ -2,7 +2,7 @@ NAME
     MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 VERSION
-    version 0.31
+    version 0.32
 
 SYNOPSIS
         my $mcpan  = MetaCPAN::API->new();
@@ -97,6 +97,8 @@ ATTRIBUTES
     This attribute is read-only (immutable), meaning that once it's set on
     initialize (via "new()"), you cannot change it. If you need to, create a
     new instance of MetaCPAN::API. Why is it immutable? Because it's better.
+
+    The default is a user agent string: MetaCPAN::API/$version.
 
 METHODS
   fetch

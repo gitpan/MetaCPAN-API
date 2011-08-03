@@ -17,7 +17,8 @@ my %WriteMakefileArgs = (
     'Module::Build' => '0.3601',
     'Test::Fatal' => '0',
     'Test::More' => '0',
-    'Test::TinyMocker' => '0'
+    'Test::TinyMocker' => '0',
+    't::lib::Functions' => '0'
   },
   'CONFIGURE_REQUIRES' => {
     'ExtUtils::MakeMaker' => '6.30',
@@ -35,7 +36,7 @@ my %WriteMakefileArgs = (
     'Try::Tiny' => '0',
     'URI::Escape' => '0'
   },
-  'VERSION' => '0.31',
+  'VERSION' => '0.32',
   'test' => {
     'TESTS' => 't/*.t'
   }

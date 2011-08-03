@@ -9,6 +9,7 @@ build_requires:
   Test::Fatal: 0
   Test::More: 0
   Test::TinyMocker: 0
+  t::lib::Functions: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
   Module::Build: 0.3601
@@ -26,4 +27,4 @@ requires:
   JSON: 0
   Try::Tiny: 0
   URI::Escape: 0
-version: 0.31
+version: 0.32

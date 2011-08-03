@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API::POD;
 BEGIN {
-  $MetaCPAN::API::POD::VERSION = '0.31';
+  $MetaCPAN::API::POD::VERSION = '0.32';
 }
 # ABSTRACT: POD information for MetaCPAN::API
 
@@ -61,7 +61,7 @@ MetaCPAN::API::POD - POD information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 DESCRIPTION
 

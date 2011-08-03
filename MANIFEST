@@ -16,6 +16,7 @@ t/_build_extra_params.t
 t/_decode_result.t
 t/author.t
 t/fetch.t
+t/lib/Functions.pm
 t/module.t
 t/pod.t
 t/post.t
