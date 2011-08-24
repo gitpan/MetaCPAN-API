@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API;
 BEGIN {
-  $MetaCPAN::API::VERSION = '0.32';
+  $MetaCPAN::API::VERSION = '0.33';
 }
 # ABSTRACT: A comprehensive, DWIM-featured API to MetaCPAN
 
@@ -137,7 +137,7 @@ MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 =head1 VERSION
 
-version 0.32
+version 0.33
 
 =head1 SYNOPSIS
 

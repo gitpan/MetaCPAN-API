@@ -2,7 +2,7 @@ NAME
     MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 VERSION
-    version 0.32
+    version 0.33
 
 SYNOPSIS
         my $mcpan  = MetaCPAN::API->new();
