@@ -23,7 +23,7 @@ my %module_build_args = (
     'Sawyer X <xsawyerx@cpan.org>'
   ],
   'dist_name' => 'MetaCPAN-API',
-  'dist_version' => '0.33',
+  'dist_version' => '0.34',
   'license' => 'perl',
   'module_name' => 'MetaCPAN::API',
   'recommends' => {},

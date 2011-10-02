@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API::POD;
 BEGIN {
-  $MetaCPAN::API::POD::VERSION = '0.33';
+  $MetaCPAN::API::POD::VERSION = '0.34';
 }
 # ABSTRACT: POD information for MetaCPAN::API
 
@@ -37,7 +37,7 @@ sub pod {
         $type =~ m{^ text/ (?: html|plain|x-pod|x-markdown ) $}x
             or croak 'Incorrect content-type provided';
 
-        $extra{'content-type'} = $type;
+        $extra{headers}{'content-type'} = $type;
     }
 
     $url = $self->base_url . "/$url";
@@ -61,7 +61,7 @@ MetaCPAN::API::POD - POD information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.33
+version 0.34
 
 =head1 DESCRIPTION
 

@@ -2,12 +2,12 @@ NAME
     MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 VERSION
-    version 0.33
+    version 0.34
 
 SYNOPSIS
         my $mcpan  = MetaCPAN::API->new();
         my $author = $mcpan->author('XSAWYERX');
-        my $dist   = $mcpan->release( distribution => 'MetaCPAN::API' );
+        my $dist   = $mcpan->release( distribution => 'MetaCPAN-API' );
 
 DESCRIPTION
     This is a hopefully-complete API-compliant interface to MetaCPAN

@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API;
 BEGIN {
-  $MetaCPAN::API::VERSION = '0.33';
+  $MetaCPAN::API::VERSION = '0.34';
 }
 # ABSTRACT: A comprehensive, DWIM-featured API to MetaCPAN
 
@@ -19,6 +19,7 @@ with qw/
     MetaCPAN::API::Module
     MetaCPAN::API::POD
     MetaCPAN::API::Release
+    MetaCPAN::API::Source
 /;
 
 has base_url => (
@@ -137,13 +138,13 @@ MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 =head1 VERSION
 
-version 0.33
+version 0.34
 
 =head1 SYNOPSIS
 
     my $mcpan  = MetaCPAN::API->new();
     my $author = $mcpan->author('XSAWYERX');
-    my $dist   = $mcpan->release( distribution => 'MetaCPAN::API' );
+    my $dist   = $mcpan->release( distribution => 'MetaCPAN-API' );
 
 =head1 DESCRIPTION
 
