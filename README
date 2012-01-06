@@ -2,7 +2,7 @@ NAME
     MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 VERSION
-    version 0.34
+    version 0.40
 
 SYNOPSIS
         my $mcpan  = MetaCPAN::API->new();
@@ -120,7 +120,7 @@ METHODS
 
   post
         # /release&content={"query":{"match_all":{}},"filter":{"prefix":{"archive":"Cache-Cache-1.06"}}}
-        my $result = $mcpan->fetch(
+        my $result = $mcpan->post(
             'release',
             {
                 query  => { match_all => {} },
@@ -132,7 +132,7 @@ METHODS
     request.
 
 AUTHOR
-      Sawyer X <xsawyerx@cpan.org>
+    Sawyer X <xsawyerx@cpan.org>
 
 COPYRIGHT AND LICENSE
     This software is copyright (c) 2011 by Sawyer X.

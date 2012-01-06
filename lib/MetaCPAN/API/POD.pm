@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 package MetaCPAN::API::POD;
-BEGIN {
-  $MetaCPAN::API::POD::VERSION = '0.34';
+{
+  $MetaCPAN::API::POD::VERSION = '0.40';
 }
 # ABSTRACT: POD information for MetaCPAN::API
 
@@ -61,7 +61,7 @@ MetaCPAN::API::POD - POD information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.34
+version 0.40
 
 =head1 DESCRIPTION
 
@@ -72,7 +72,7 @@ and distribution releases.
 
 =head2 pod
 
-    my $result = $mcpan->pod( pod => 'Moose' );
+    my $result = $mcpan->pod( module => 'Moose' );
 
     # or
     my $result = $mcpan->pod(
@@ -85,7 +85,7 @@ Searches MetaCPAN for a module or a specific release and returns the POD.
 
 =head1 AUTHOR
 
-  Sawyer X <xsawyerx@cpan.org>
+Sawyer X <xsawyerx@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

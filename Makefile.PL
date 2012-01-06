@@ -9,35 +9,37 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'A comprehensive, DWIM-featured API to MetaCPAN',
-  'AUTHOR' => 'Sawyer X <xsawyerx@cpan.org>',
-  'BUILD_REQUIRES' => {
-    'File::Find' => '0',
-    'File::Temp' => '0',
-    'Module::Build' => '0.3601',
-    'Test::Fatal' => '0',
-    'Test::More' => '0',
-    'Test::TinyMocker' => '0'
+  "ABSTRACT" => "A comprehensive, DWIM-featured API to MetaCPAN",
+  "AUTHOR" => "Sawyer X <xsawyerx\@cpan.org>",
+  "BUILD_REQUIRES" => {
+    "File::Find" => 0,
+    "File::Temp" => 0,
+    "Module::Build" => "0.3601",
+    "Test::Fatal" => 0,
+    "Test::More" => 0,
+    "Test::TinyMocker" => 0
   },
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.30',
-    'Module::Build' => '0.3601'
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30",
+    "Module::Build" => "0.3601"
   },
-  'DISTNAME' => 'MetaCPAN-API',
-  'EXE_FILES' => [],
-  'LICENSE' => 'perl',
-  'NAME' => 'MetaCPAN::API',
-  'PREREQ_PM' => {
-    'Any::Moose' => '0',
-    'Carp' => '0',
-    'HTTP::Tiny' => '0',
-    'JSON' => '0',
-    'Try::Tiny' => '0',
-    'URI::Escape' => '0'
+  "DISTNAME" => "MetaCPAN-API",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "MetaCPAN::API",
+  "PREREQ_PM" => {
+    "Any::Moose" => 0,
+    "Carp" => 0,
+    "HTTP::Tiny" => 0,
+    "JSON" => 0,
+    "Try::Tiny" => 0,
+    "URI::Escape" => 0,
+    "strict" => 0,
+    "warnings" => 0
   },
-  'VERSION' => '0.34',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "0.40",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 

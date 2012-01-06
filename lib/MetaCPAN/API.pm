@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 package MetaCPAN::API;
-BEGIN {
-  $MetaCPAN::API::VERSION = '0.34';
+{
+  $MetaCPAN::API::VERSION = '0.40';
 }
 # ABSTRACT: A comprehensive, DWIM-featured API to MetaCPAN
 
@@ -72,7 +72,7 @@ sub post {
     ref $query and ref $query eq 'HASH'
         or croak 'Second argument of query hashref must be provided';
 
-    my $query_json = encode_json $query;
+    my $query_json = to_json( $query, { canonical => 1 } );
     my $result     = $self->ua->request(
         'POST',
         "$base/$url",
@@ -138,7 +138,7 @@ MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 =head1 VERSION
 
-version 0.34
+version 0.40
 
 =head1 SYNOPSIS
 
@@ -264,7 +264,7 @@ It accepts an additional hash as C<GET> parameters.
 =head2 post
 
     # /release&content={"query":{"match_all":{}},"filter":{"prefix":{"archive":"Cache-Cache-1.06"}}}
-    my $result = $mcpan->fetch(
+    my $result = $mcpan->post(
         'release',
         {
             query  => { match_all => {} },
@@ -276,7 +276,7 @@ The POST equivalent of the C<fetch()> method. It gets the path and JSON request.
 
 =head1 AUTHOR
 
-  Sawyer X <xsawyerx@cpan.org>
+Sawyer X <xsawyerx@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 package MetaCPAN::API::Source;
-BEGIN {
-  $MetaCPAN::API::Source::VERSION = '0.34';
+{
+  $MetaCPAN::API::Source::VERSION = '0.40';
 }
 # ABSTRACT: Source information for MetaCPAN::API
 
@@ -49,7 +49,7 @@ MetaCPAN::API::Source - Source information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.34
+version 0.40
 
 =head1 DESCRIPTION
 
@@ -81,7 +81,7 @@ the same terms as the Perl 5 programming language system itself.
 
 =head1 AUTHOR
 
-  Sawyer X <xsawyerx@cpan.org>
+Sawyer X <xsawyerx@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

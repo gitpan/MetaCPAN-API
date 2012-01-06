@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 package MetaCPAN::API::Author;
-BEGIN {
-  $MetaCPAN::API::Author::VERSION = '0.34';
+{
+  $MetaCPAN::API::Author::VERSION = '0.40';
 }
 # ABSTRACT: Author information for MetaCPAN::API
 
@@ -51,7 +51,7 @@ MetaCPAN::API::Author - Author information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.34
+version 0.40
 
 =head1 DESCRIPTION
 
@@ -78,7 +78,7 @@ You can do complex searches using 'search' parameter:
 
 =head1 AUTHOR
 
-  Sawyer X <xsawyerx@cpan.org>
+Sawyer X <xsawyerx@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

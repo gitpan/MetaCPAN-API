@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 package MetaCPAN::API::Module;
-BEGIN {
-  $MetaCPAN::API::Module::VERSION = '0.34';
+{
+  $MetaCPAN::API::Module::VERSION = '0.40';
 }
 # ABSTRACT: Module information for MetaCPAN::API
 
@@ -34,7 +34,7 @@ MetaCPAN::API::Module - Module information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.34
+version 0.40
 
 =head1 DESCRIPTION
 
@@ -56,7 +56,7 @@ A synonym of C<module>.
 
 =head1 AUTHOR
 
-  Sawyer X <xsawyerx@cpan.org>
+Sawyer X <xsawyerx@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
