@@ -12,6 +12,7 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "A comprehensive, DWIM-featured API to MetaCPAN",
   "AUTHOR" => "Sawyer X <xsawyerx\@cpan.org>",
   "BUILD_REQUIRES" => {
+    "English" => 0,
     "File::Find" => 0,
     "File::Temp" => 0,
     "Module::Build" => "0.3601",
@@ -37,7 +38,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.41",
+  "VERSION" => "0.42",
   "test" => {
     "TESTS" => "t/*.t"
   }

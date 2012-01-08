@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API::Author;
 {
-  $MetaCPAN::API::Author::VERSION = '0.41';
+  $MetaCPAN::API::Author::VERSION = '0.42';
 }
 # ABSTRACT: Author information for MetaCPAN::API
 
@@ -51,7 +51,7 @@ MetaCPAN::API::Author - Author information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.41
+version 0.42
 
 =head1 DESCRIPTION
 

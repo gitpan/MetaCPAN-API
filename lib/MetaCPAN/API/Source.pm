@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API::Source;
 {
-  $MetaCPAN::API::Source::VERSION = '0.41';
+  $MetaCPAN::API::Source::VERSION = '0.42';
 }
 # ABSTRACT: Source information for MetaCPAN::API
 
@@ -49,7 +49,7 @@ MetaCPAN::API::Source - Source information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.41
+version 0.42
 
 =head1 DESCRIPTION
 
@@ -57,9 +57,9 @@ This role provides MetaCPAN::API with fetching of source files.
 
 =head1 METHODS
 
-=head2 pod
+=head2 source
 
-    my $text = $mcpan->pod(
+    my $source = $mcpan->source(
         author  => 'DOY',
         release => 'Moose-2.0201',
         path    => 'lib/Moose.pm',
