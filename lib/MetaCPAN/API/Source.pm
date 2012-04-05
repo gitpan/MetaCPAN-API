@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API::Source;
 {
-  $MetaCPAN::API::Source::VERSION = '0.42';
+  $MetaCPAN::API::Source::VERSION = '0.43';
 }
 # ABSTRACT: Source information for MetaCPAN::API
 
@@ -49,7 +49,7 @@ MetaCPAN::API::Source - Source information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.42
+version 0.43
 
 =head1 DESCRIPTION
 

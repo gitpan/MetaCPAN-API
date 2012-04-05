@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package MetaCPAN::API;
 {
-  $MetaCPAN::API::VERSION = '0.42';
+  $MetaCPAN::API::VERSION = '0.43';
 }
 # ABSTRACT: A comprehensive, DWIM-featured API to MetaCPAN
 
@@ -121,7 +121,9 @@ sub _build_extra_params {
         or croak 'Incorrect number of params, must be key/value';
 
     my %extra = @_;
-    my $extra = join '&', map { "$_=" . uri_escape($extra{$_}) } keys %extra;
+    my $extra = join '&', map {
+        "$_=" . uri_escape( $extra{$_} )
+    } sort keys %extra;
 
     return $extra;
 }
@@ -138,13 +140,31 @@ MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 =head1 VERSION
 
-version 0.42
+version 0.43
 
 =head1 SYNOPSIS
 
+    # simple usage
     my $mcpan  = MetaCPAN::API->new();
     my $author = $mcpan->author('XSAWYERX');
     my $dist   = $mcpan->release( distribution => 'MetaCPAN-API' );
+
+    # advanced usage with cache (contributed by Kent Fredric)
+    require CHI;
+    require WWW::Mechanize::Cached;
+    require HTTP::Tiny::Mech;
+    require MetaCPAN::API;
+
+    my $mcpan = MetaCPAN::API->new(
+      ua => HTTP::Tiny::Mech->new(
+        mechua => WWW::Mechanize::Cached->new(
+          cache => CHI->new(
+            driver => 'File',
+            root_dir => '/tmp/metacpan-cache',
+          ),
+        ),
+      ),
+    );
 
 =head1 DESCRIPTION
 
