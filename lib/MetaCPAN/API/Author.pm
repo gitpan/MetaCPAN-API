@@ -1,11 +1,8 @@
 use strict;
 use warnings;
 package MetaCPAN::API::Author;
-{
-  $MetaCPAN::API::Author::VERSION = '0.43';
-}
 # ABSTRACT: Author information for MetaCPAN::API
-
+$MetaCPAN::API::Author::VERSION = '0.44';
 use Carp;
 use Any::Moose 'Role';
 
@@ -41,7 +38,7 @@ sub author {
 
 1;
 
-
+__END__
 
 =pod
 
@@ -51,7 +48,7 @@ MetaCPAN::API::Author - Author information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.43
+version 0.44
 
 =head1 DESCRIPTION
 
@@ -88,7 +85,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

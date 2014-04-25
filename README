@@ -2,7 +2,7 @@ NAME
     MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 VERSION
-    version 0.43
+    version 0.44
 
 SYNOPSIS
         # simple usage
@@ -75,6 +75,15 @@ DESCRIPTION
 
         You can (and should) read up on the generic methods, which will
         explain how their DWIMish nature works, and what searches they run.
+
+DEPRECATED
+    THIS MODULE IS DEPRECATED, DO NOT USE!
+
+    This module has been completely rewritten to address a multitude of
+    problems, and is now available under the new official name:
+    MetaCPAN::Client.
+
+    Please do not use this module.
 
 ATTRIBUTES
   base_url

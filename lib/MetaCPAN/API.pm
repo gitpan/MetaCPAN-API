@@ -1,11 +1,8 @@
 use strict;
 use warnings;
 package MetaCPAN::API;
-{
-  $MetaCPAN::API::VERSION = '0.43';
-}
 # ABSTRACT: A comprehensive, DWIM-featured API to MetaCPAN
-
+$MetaCPAN::API::VERSION = '0.44';
 use Any::Moose;
 
 use Carp;
@@ -16,8 +13,13 @@ use URI::Escape 'uri_escape';
 
 with qw/
     MetaCPAN::API::Author
+    MetaCPAN::API::Distribution
+    MetaCPAN::API::Favorite
+    MetaCPAN::API::File
+    MetaCPAN::API::Autocomplete
     MetaCPAN::API::Module
     MetaCPAN::API::POD
+    MetaCPAN::API::Rating
     MetaCPAN::API::Release
     MetaCPAN::API::Source
 /;
@@ -119,8 +121,14 @@ sub _build_extra_params {
 
     @_ % 2 == 0
         or croak 'Incorrect number of params, must be key/value';
-
     my %extra = @_;
+
+    # if it's deep, JSON encoding needs to be involved
+    if (scalar grep { ref } values %extra) {
+        my $query_json = to_json( \%extra, { canonical => 1 } );
+        %extra = ( source => $query_json );
+    }
+
     my $extra = join '&', map {
         "$_=" . uri_escape( $extra{$_} )
     } sort keys %extra;
@@ -130,7 +138,7 @@ sub _build_extra_params {
 
 1;
 
-
+__END__
 
 =pod
 
@@ -140,7 +148,7 @@ MetaCPAN::API - A comprehensive, DWIM-featured API to MetaCPAN
 
 =head1 VERSION
 
-version 0.43
+version 0.44
 
 =head1 SYNOPSIS
 
@@ -215,6 +223,16 @@ You can (and should) read up on the generic methods, which will explain how
 their DWIMish nature works, and what searches they run.
 
 =back
+
+=head1 DEPRECATED
+
+B<THIS MODULE IS DEPRECATED, DO NOT USE!>
+
+This module has been completely rewritten to address a multitude
+of problems, and is now available under the new official name:
+L<MetaCPAN::Client>.
+
+Please do not use this module.
 
 =head1 ATTRIBUTES
 
@@ -306,7 +324,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

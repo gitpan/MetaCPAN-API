@@ -3,9 +3,8 @@ abstract: 'A comprehensive, DWIM-featured API to MetaCPAN'
 author:
   - 'Sawyer X <xsawyerx@cpan.org>'
 build_requires:
-  English: 0
-  File::Find: 0
-  File::Temp: 0
+  IO::Handle: 0
+  IPC::Open3: 0
   Module::Build: 0.3601
   Test::Fatal: 0
   Test::More: 0
@@ -14,12 +13,15 @@ configure_requires:
   ExtUtils::MakeMaker: 6.30
   Module::Build: 0.3601
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300005, CPAN::Meta::Converter version 2.112150'
+generated_by: 'Dist::Zilla version 5.015, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: MetaCPAN-API
+no_index:
+  file:
+    - README.pod
 requires:
   Any::Moose: 0
   Carp: 0
@@ -31,4 +33,4 @@ requires:
   warnings: 0
 resources:
   repository: git://github.com/xsawyerx/metacpan-api.git
-version: 0.43
+version: 0.44

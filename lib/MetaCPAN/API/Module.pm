@@ -1,11 +1,8 @@
 use strict;
 use warnings;
 package MetaCPAN::API::Module;
-{
-  $MetaCPAN::API::Module::VERSION = '0.43';
-}
 # ABSTRACT: Module information for MetaCPAN::API
-
+$MetaCPAN::API::Module::VERSION = '0.44';
 use Carp;
 use Any::Moose 'Role';
 
@@ -19,12 +16,9 @@ sub module {
     return $self->fetch("module/$name");
 }
 
-# file() is a synonym of module
-sub file { goto &module }
-
 1;
 
-
+__END__
 
 =pod
 
@@ -34,7 +28,7 @@ MetaCPAN::API::Module - Module information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.43
+version 0.44
 
 =head1 DESCRIPTION
 
@@ -52,7 +46,8 @@ Searches MetaCPAN and returns a module's C<.pm> file.
 
 =head2 file
 
-A synonym of C<module>.
+This used to be a synonym of C<module>, but the functionality has now
+moved to L<MetaCPAN::API::File>.
 
 =head1 AUTHOR
 
@@ -66,7 +61,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

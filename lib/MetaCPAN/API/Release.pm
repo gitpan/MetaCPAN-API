@@ -1,11 +1,8 @@
 use strict;
 use warnings;
 package MetaCPAN::API::Release;
-{
-  $MetaCPAN::API::Release::VERSION = '0.43';
-}
 # ABSTRACT: Distribution and releases information for MetaCPAN::API
-
+$MetaCPAN::API::Release::VERSION = '0.44';
 use Carp;
 use Any::Moose 'Role';
 
@@ -44,7 +41,7 @@ sub release {
 
 1;
 
-
+__END__
 
 =pod
 
@@ -54,7 +51,7 @@ MetaCPAN::API::Release - Distribution and releases information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.43
+version 0.44
 
 =head1 DESCRIPTION
 
@@ -96,7 +93,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

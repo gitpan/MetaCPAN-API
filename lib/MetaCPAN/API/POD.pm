@@ -1,11 +1,8 @@
 use strict;
 use warnings;
 package MetaCPAN::API::POD;
-{
-  $MetaCPAN::API::POD::VERSION = '0.43';
-}
 # ABSTRACT: POD information for MetaCPAN::API
-
+$MetaCPAN::API::POD::VERSION = '0.44';
 use Carp;
 use Any::Moose 'Role';
 
@@ -51,7 +48,7 @@ sub pod {
 
 1;
 
-
+__END__
 
 =pod
 
@@ -61,7 +58,7 @@ MetaCPAN::API::POD - POD information for MetaCPAN::API
 
 =head1 VERSION
 
-version 0.43
+version 0.44
 
 =head1 DESCRIPTION
 
@@ -83,6 +80,10 @@ and distribution releases.
 
 Searches MetaCPAN for a module or a specific release and returns the POD.
 
+Content type can also be specified, like so:
+
+    my $result = $mcpan->pod( module => 'Moose', 'content-type' => 'x-pod' );
+
 =head1 AUTHOR
 
 Sawyer X <xsawyerx@cpan.org>
@@ -95,7 +96,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-
